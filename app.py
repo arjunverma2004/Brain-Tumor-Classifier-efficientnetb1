@@ -14,7 +14,7 @@ MODEL_PATH = "brain_tumor_predictor.keras"
 st.set_page_config(
     page_title="🧠 Brain Tumor MRI Classifier",
     page_icon="🔬",
-    layout="centered"
+    layout="wide"
 )
 
 # --- 🎨 Custom CSS Injection ---
