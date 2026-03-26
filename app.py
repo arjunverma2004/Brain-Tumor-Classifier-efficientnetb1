@@ -4,12 +4,14 @@ from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 import pandas as pd
+from src import utils
+from tensorflow.keras.applications import efficientnet, EfficientNetB1
 
 # --- Configuration and Setup ---
 
 CLASS_NAMES = ['Glioma Tumor', 'Meningioma Tumor', 'No Tumor', 'Pituitary Tumor']
 IMG_SIZE = (224, 224)
-MODEL_PATH = "brain_tumor_predictor.keras"
+MODEL_PATH = "models/brain_tumor_predictor.keras"
 
 st.set_page_config(
     page_title="🧠 Brain Tumor MRI Classifier",
@@ -80,19 +82,9 @@ st.markdown(
 )
 # --- Model Loading (Cached) ---
 
-@st.cache_resource
-def load_keras_model(path):
-    """Loads the pre-trained Keras model."""
-    try:
-        with st.spinner(f"Loading Keras model from {path}..."):
-            model = load_model(path)
-            st.success("Model loaded successfully!")
-            return model
-    except Exception as e:
-        st.error(f"Error loading model: Could not find or load model at '{path}'. Details: {e}")
-        st.stop()
 
-MODEL = load_keras_model(MODEL_PATH)
+
+MODEL = utils.load_keras_model(MODEL_PATH)
 
 # --- Utility Functions ---
 
@@ -107,6 +99,9 @@ def preprocess_image(image: Image.Image) -> np.ndarray:
         img_array = img_array[..., :3]
         
     img_array = np.expand_dims(img_array, axis=0)
+    img_array = img_array.astype(np.float32)
+    img_array = efficientnet.preprocess_input(img_array)
+
     return img_array.astype(np.float32)
 
 def predict_and_display(image: Image.Image, model: tf.keras.Model):
