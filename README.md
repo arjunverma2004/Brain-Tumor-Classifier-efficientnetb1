@@ -4,6 +4,8 @@ An **AI-powered diagnostic web application** that classifies brain MRI scans int
 
 This project leverages **Deep Learning (Transfer Learning)** via a fine-tuned **EfficientNetB1** model to provide rapid, highly accurate predictions. It features an interactive, user-friendly interface built with **Streamlit**, designed to provide medical professionals and users with a reliable "second opinion" and a transparent breakdown of prediction probabilities.
 
+👉 **Live Streamlit App:** [https://x-raydisease-prediction.streamlit.app/](https://brain-tumor-classifier-efficientnetb1.streamlit.app/)
+
 ---
 
 ## ✨ Key Features
