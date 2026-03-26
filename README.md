@@ -48,12 +48,26 @@ The fine-tuned model achieves state-of-the-art results on the testing set:
 ## 📁 Repository Structure
 
 ```text
+Brain-Tumor-Detection/
+│
+├── 📂 Test/ # Test images
+├── 📂 models/ # Saved models
+│ └── brain_tumor_predictor.keras
+│
+├── 📂 notebooks/ # Jupyter notebooks
+│ └── Brain_tumor1.ipynb
+│
+├── 📂 src/ # Source code
+│ ├── data_ingestion.py # Data pipeline
+│ ├── data_loader.py # Dataset loading
+│ ├── data_preprocessor.py # Preprocessing & augmentation
+│ ├── model_trainer.py # Model training
+│ └── utils.py # Helper functions
+│
+├── .gitignore
 ├── app.py                         # Main Streamlit web application
-├── Brain_tumor1.ipynb             # Jupyter Notebook with data pipeline, model training, and evaluation
-├── brain_tumor_predictor.keras    # The saved, fine-tuned EfficientNetB1 model weights
-├── requirements.txt               # List of Python dependencies
-├── Test/                          # Folder containing sample MRI images for testing
-└── README.md                      # Project documentation
+├── requirements.txt 
+└── README.md
 
 ```
 
