@@ -1,4 +1,4 @@
-from tensorflow.keras import load_model
+from tensorflow.keras.models import load_model
 import  streamlit as st
 import os
 
